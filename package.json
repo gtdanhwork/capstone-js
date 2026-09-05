@@ -1,0 +1,16 @@
+{
+  "name": "phone-shop-capstone",
+  "version": "1.0.0",
+  "description": "Capstone JS Phone Shop Project with SASS 7-1 and Bootstrap 5",
+  "main": "index.html",
+  "scripts": {
+    "sass:watch": "sass asset/sass/main.scss asset/css/main.css --watch",
+    "sass:build": "sass asset/sass/main.scss asset/css/main.css --style=compressed"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

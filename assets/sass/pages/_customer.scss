@@ -1,0 +1,68 @@
+.customer-page {
+  min-height: 100vh;
+}
+
+.hero {
+  padding: 70px 0;
+  background:
+    radial-gradient(circle at 85% 30%, rgba(13, 110, 253, 0.14), transparent 30%),
+    linear-gradient(180deg, #fff, #f8f9fa);
+
+  .hero-badge {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 50px;
+    background: rgba(13, 110, 253, 0.1);
+    color: $primary-color;
+    font-weight: 700;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.1;
+  }
+}
+
+.cart-item {
+  border-bottom: 1px solid $border-color;
+  padding: 14px 0;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  .cart-image {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .quantity-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      background: #fff;
+    }
+  }
+}
+
+.empty-cart {
+  @include flex-center;
+  min-height: 220px;
+  flex-direction: column;
+  color: $secondary-color;
+}
+
+@include responsive-md {
+  .hero {
+    padding: 45px 0;
+  }
+}
