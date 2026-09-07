@@ -1,0 +1,20 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-card;
+  }
+}
+
+@mixin responsive-md {
+  @media (max-width: 767.98px) {
+    @content;
+  }
+}

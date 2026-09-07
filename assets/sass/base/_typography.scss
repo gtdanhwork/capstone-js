@@ -1,0 +1,17 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: rem(34);
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  color: $secondary-color;
+  margin-bottom: 0;
+}
