@@ -1,15 +1,9 @@
-import ProductAPI from './productAPI.js';
+import axios from 'https://cdn.jsdelivr.net/npm/axios@1.20.0/+esm';
 
-/**
- * Service tương thích với controller Customer.
- * Toàn bộ dữ liệu sản phẩm được lấy qua ProductAPI.
- */
+const BASE_URL = 'https://svcy.myclass.vn/api/ProductApi';
+
 export default class ProductService {
-	constructor() {
-		this.api = new ProductAPI();
-	}
-
-	async layDanhSachSanPham() {
-		return this.api.getAll();
+	getAll() {
+		return axios({ url: `${BASE_URL}/getall`, method: 'GET' });
 	}
 }

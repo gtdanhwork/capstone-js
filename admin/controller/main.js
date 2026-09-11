@@ -1,13 +1,18 @@
-import ProductAPI from '../services/productAPI.js';
+import ProductService from '../services/productService.js';
 import Validation from '../model/Validation.js';
-const api = new ProductAPI(),
+
+const productService = new ProductService(),
 	validation = new Validation();
+
 let products = [],
 	editingId = null;
+
 const $ = (id) => document.getElementById(id),
 	money = (v) => Number(v).toLocaleString('vi-VN') + ' ₫';
+
 const form = $('productForm'),
 	tbody = $('productTableBody');
+
 function toast(msg, type = 'success') {
 	const el = $('appToast');
 	$('toastBody').textContent = msg;
@@ -15,6 +20,7 @@ function toast(msg, type = 'success') {
 	el.classList.add(type === 'danger' ? 'text-bg-danger' : 'text-bg-success');
 	bootstrap.Toast.getOrCreateInstance(el).show();
 }
+
 function data() {
 	return {
 		name: $('productName').value.trim(),
@@ -27,11 +33,13 @@ function data() {
 		desc: $('productDesc').value.trim(),
 	};
 }
+
 function errorsClear() {
 	document
 		.querySelectorAll('.validation-message')
 		.forEach((x) => (x.textContent = ''));
 }
+
 function errorsShow(e) {
 	errorsClear();
 	Object.entries(e).forEach(([k, v]) => {
@@ -39,6 +47,7 @@ function errorsShow(e) {
 		if (el) el.textContent = v;
 	});
 }
+
 function stats() {
 	$('totalProducts').textContent = products.length;
 	$('samsungCount').textContent = products.filter(
@@ -48,6 +57,7 @@ function stats() {
 		(x) => String(x.type).toLowerCase() === 'iphone',
 	).length;
 }
+
 function render(list = products) {
 	if (!list.length) {
 		tbody.innerHTML =
@@ -63,6 +73,7 @@ function render(list = products) {
 		.join('');
 	stats();
 }
+
 function apply() {
 	const q = $('searchName').value.toLowerCase().trim();
 	let a = products.filter((p) => String(p.name).toLowerCase().includes(q));
@@ -70,6 +81,7 @@ function apply() {
 	if ($('sortPrice').value === 'desc') a.sort((x, y) => y.price - x.price);
 	render(a);
 }
+
 function reset() {
 	form.reset();
 	errorsClear();
@@ -91,7 +103,7 @@ function fill(p) {
 
 async function load() {
 	try {
-		products = await api.getAll();
+		products = await productService.getAll();
 		render();
 	} catch (e) {
 		console.error(e);
@@ -107,10 +119,10 @@ form.addEventListener('submit', async (e) => {
 	if (Object.keys(er).length) return errorsShow(er);
 	try {
 		if (editingId === null) {
-			await api.create(d);
+			await productService.create(d);
 			toast('Thêm sản phẩm thành công.');
 		} else {
-			await api.update(editingId, d);
+			await productService.update(editingId, d);
 			toast('Cập nhật sản phẩm thành công.');
 		}
 		await load();
@@ -138,7 +150,7 @@ tbody.addEventListener('click', async (e) => {
 	if (del) {
 		if (!confirm('Bạn có chắc muốn xóa sản phẩm này?')) return;
 		try {
-			await api.delete(del.dataset.id);
+			await productService.delete(del.dataset.id);
 			toast('Xóa sản phẩm thành công.');
 			await load();
 		} catch (err) {
