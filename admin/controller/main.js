@@ -23,13 +23,11 @@ function toast(msg, type = 'success') {
 
 function data() {
 	return {
+		id: $('productId').value.trim(),
 		name: $('productName').value.trim(),
 		price: Number($('productPrice').value),
 		type: $('productType').value,
 		img: $('productImage').value.trim(),
-		screen: $('productScreen').value.trim(),
-		backCamera: $('productBackCamera').value.trim(),
-		frontCamera: $('productFrontCamera').value.trim(),
 		desc: $('productDesc').value.trim(),
 	};
 }
@@ -83,6 +81,7 @@ function apply() {
 }
 
 function reset() {
+	$('productId').disabled = false;
 	form.reset();
 	errorsClear();
 	editingId = null;
@@ -91,13 +90,12 @@ function reset() {
 }
 
 function fill(p) {
+	$('productId').disabled = true;
+	$('productId').value = p.id || '';
 	$('productName').value = p.name || '';
 	$('productPrice').value = p.price || '';
 	$('productType').value = p.type || '';
 	$('productImage').value = p.img || '';
-	$('productScreen').value = p.screen || '';
-	$('productBackCamera').value = p.backCamera || '';
-	$('productFrontCamera').value = p.frontCamera || '';
 	$('productDesc').value = p.desc || '';
 }
 

@@ -7,6 +7,8 @@ export default class ProductService {
 		return (await axios.get(`${BASE_URL}/getall`)).data;
 	}
 	async create(data) {
+		data.id = data.id.toUpperCase();
+		console.log(data);
 		return (await axios.post(`${BASE_URL}/create`, data)).data;
 	}
 	async update(id, data) {
