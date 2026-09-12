@@ -144,6 +144,54 @@ const fetchCart = () => {
 		.join('');
 };
 
+function renderProductList(list = productList) {
+	if (!list.length) {
+		productList.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-warning text-center">
+          Không tìm thấy sản phẩm phù hợp.
+        </div>
+      </div>
+    `;
+		return;
+	}
+
+	productList.innerHTML = list
+		.map(
+			(product) => `
+      <div class="col">
+        <div class="product-card">
+          <div class="product-image-wrap">
+            <span class="product-badge">${String(product.type).toLowerCase() === 'iphone' ? 'iPhone' : 'Samsung'}</span>
+            <img
+              src="${product.img || 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=90'}"
+              alt="${product.name}"
+              class="product-image"
+              onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=90'"
+            />
+          </div>
+          <div class="product-content">
+            <span class="product-type">${product.type || 'Phone'}</span>
+            <h5>${product.name}</h5>
+            <p class="product-desc">${product.desc || 'Điện thoại chính hãng, thiết kế hiện đại.'}</p>
+            <div class="product-meta">
+              <span class="rating"><i class="fa-solid fa-star"></i> ${product.rating || '4.8'}</span>
+              <span>Đã bán ${product.sold || '100'}+</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <span class="product-price">${formatCurrency(product.price)}</span>
+              <button class="btn btn-product btnAddToCart" data-id="${product.id}">
+                <i class="fa-solid fa-bag-shopping me-1"></i> Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+		)
+		.join('');
+}
+
 function showToast(message, type = 'success') {
 	const toastElement = document.getElementById('appToast');
 	const toastBody = document.getElementById('toastBody');
@@ -161,16 +209,16 @@ selectProductType.addEventListener('change', (event) => {
 	const selectedType = event.target.value;
 
 	if (selectedType === 'all') {
-		renderProductList(productList);
+		renderProductList(data);
 		return;
 	}
 
-	const filteredList = productList.filter(
+	const filteredData = data.filter(
 		(product) =>
 			String(product.type).toLowerCase() === selectedType.toLowerCase(),
 	);
 
-	renderProductList(filteredList);
+	renderProductList(filteredData);
 });
 
 productList.addEventListener('click', (event) => {
