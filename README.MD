@@ -101,5 +101,5 @@ Phone-Shop/
 ## 🔗 6. Liên kết dự án
 - **Link Github:** [Đường dẫn GitHub Repository]
 - **Link Demo Online:** [Đường dẫn Vercel / Netlify]
-- **Video Demo Youtube:** [Đường dẫn Video Youtube]
+- **Video Demo:** [Đường dẫn Video Youtube]
 - **Google Sheet:** https://docs.google.com/spreadsheets/d/1PkdoF_fyMtaDp1yX3AXYNx0lREAzpOJwf3aOF-bB6Y4/edit?usp=sharing
