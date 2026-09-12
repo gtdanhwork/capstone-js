@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 📱 Dự Án Capstone JS - Phone Shop Website
 
 Dự án Capstone môn Lập trình JavaScript (Vanilla JS, HTML5, SASS/SCSS & Bootstrap 5) xây dựng trang web bán điện thoại hoàn chỉnh gồm phân hệ Khách hàng (Customer) và Quản trị viên (Admin).
@@ -62,7 +61,6 @@ Phone-Shop/
 │   │   └── productAPI.js          # Service Axios (GET)
 │   └── view/
 │       └── index.html             # Giao diện Customer (Grid, Cards, Cart Modal)
-├── data-backup.json               # Dữ liệu dự phòng
 ├── index.html                     # Trang chọn điều hướng (Customer / Admin)
 └── README.md                      # Tài liệu hướng dẫn dự án
 ```
@@ -105,27 +103,3 @@ Phone-Shop/
 - **Link Demo Online:** [Đường dẫn Vercel / Netlify]
 - **Video Demo Youtube:** [Đường dẫn Video Youtube]
 - **Google Sheet:** https://docs.google.com/spreadsheets/d/1PkdoF_fyMtaDp1yX3AXYNx0lREAzpOJwf3aOF-bB6Y4/edit?usp=sharing
-=======
-# CAPSTONE JS - PHONE SHOP
-
-## Chức năng theo đề
-- Website bán hàng + trang quản trị.
-- SASS + Bootstrap + responsive.
-- MockAPI/Axios.
-- Product model.
-- Hiển thị sản phẩm.
-- Filter Samsung/iPhone.
-- CartItem, thêm giỏ, tăng/giảm số lượng, remove.
-- Tổng tiền, localStorage, checkout clear cart.
-- Admin GET/POST/PUT/DELETE.
-- Validation.
-- Search theo tên.
-- Sort giá tăng/giảm.
-
-## Chạy
-Dùng VS Code Live Server và mở `index.html`.
-
-## MockAPI
-Mở `assets/js/config.js`, thay `PRODUCT_API_URL` bằng URL resource `products` của nhóm.
-Nếu chưa thay, project dùng dữ liệu demo để bạn test toàn bộ giao diện/nghiệp vụ.
->>>>>>> tuyetphuong
